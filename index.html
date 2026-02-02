@@ -3,317 +3,735 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Shihab Hossain</title>
+    <title>Shihab Hossain - Full Stack Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f1f1f1;
+            box-sizing: border-box;
         }
 
-        .resume-container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2c5282;
+            --accent-color: #d4af37;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .resume-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .resume-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 50px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
             display: flex;
+            align-items: center;
+            gap: 40px;
         }
 
-        aside {
-            width: 36%;
-            background-color: #f1f1f1;
-            padding: 20px;
-            border-right: 2px solid #ddd;
-            border-radius: 8px 0 0 8px;
-        }
-
-        main {
-            width: 70%;
-            padding: 20px;
-            
-        }
-
-        .profile-pic {
+        .profile-image {
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            width: 180px;
-            height: 180px;
-            margin-bottom: 20px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            animation: slideInLeft 0.8s ease-out;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2rem;
-            color: #333;
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #777;
+        .header-text {
+            flex: 1;
+            animation: slideInRight 0.8s ease-out;
         }
 
-        .contact-info {
-            margin-top: 10px;
-            font-size: 1rem;
-            color: #555;
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .contact-info p {
-            margin: 4px 0;
+        .header-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
         }
 
-        .section {
-            margin-bottom: 30px;
-        }
-        .contact-info p {
-        margin: 4px 0;
+        .header-text .title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .contact-info a {
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            width: 20px;
+        }
+
+        .contact-item a {
+            color: white;
             text-decoration: none;
-            color: inherit;
+            transition: all 0.3s ease;
         }
 
-        .contact-info a:hover {
+        .contact-item a:hover {
+            color: var(--accent-color);
             text-decoration: underline;
         }
 
-        h2 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-        }
-
-        .skills-list, .languages-list {
-            flex-wrap: wrap;
-        }
-
-        .skills-list li, .languages-list li {
-            margin-right: 15px;
-            background-color: #f0f0f0;
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
-
-        .about p {
-            margin: 0;
-        }
-
-        .references .reference-item {
-            margin-bottom: 10px;
-        }
-        .no-underline {
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
-        .social-button {
-            margin-right: 10px;
-            font-size: 24px;
-            color: #333;
-            transition: color 0.3s ease;
+        .social-link:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
 
-        .social-button:hover {
-            color: #007bff;
-        }
-    </style>
-    <style>
-        @media print {
-        @page {
-            margin: 10mm; /* Adjust margins for the entire document */
-            margin-bottom: 20mm; /* Space at the bottom of each page */
-
+        .resume-body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
+        .sidebar {
+            background: var(--bg-light);
+            padding: 50px 40px;
+            border-right: 1px solid var(--border-color);
         }
 
-        /* Optional: If you have headers or footers on your page, hide them for print */
-        header, footer {
+        .main-content {
+            padding: 50px 60px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .about-text {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .experience-item, .education-item, .project-item {
+            margin-bottom: 30px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .experience-item::before, .education-item::before, .project-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+        }
+
+        .experience-item::after, .education-item::after, .project-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background: var(--border-color);
+        }
+
+        .experience-item:last-child::after, .education-item:last-child::after, .project-item:last-child::after {
             display: none;
         }
-        /* Adds space at the beginning of the second page */
-        .second-page {
-            page-break-before: always; /* Forces a page break before this element */
-            padding-top: 15mm; /* Adds 30mm of space at the top of the second page */
+
+        .item-header {
+            margin-bottom: 10px;
         }
-    }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .item-subtitle {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .item-date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .item-description {
+            color: var(--text-dark);
+            margin-top: 10px;
+            line-height: 1.7;
+        }
+
+        .item-description ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .item-description li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            color: var(--text-light);
+        }
+
+        .item-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .project-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover i {
+            transform: translateX(3px);
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .skill-category-content {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .soft-skills-list, .languages-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .soft-skills-list li, .languages-list li {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .soft-skills-list li:hover, .languages-list li:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        @media print {
+            @page {
+                margin: 0;
+                size: A4;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume-wrapper {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+
+            .resume-header {
+                padding: 30px 40px;
+            }
+
+            .header-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .sidebar {
+                padding: 30px 25px;
+            }
+
+            .main-content {
+                padding: 30px 40px;
+            }
+
+            .section {
+                page-break-inside: avoid;
+                animation: none;
+            }
+
+            .social-link:hover,
+            .skill-category:hover,
+            .soft-skills-list li:hover,
+            .languages-list li:hover {
+                transform: none;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+
+            .resume-wrapper {
+                border-radius: 0;
+            }
+
+            .resume-header {
+                padding: 30px 25px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 25px;
+            }
+
+            .header-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-text .title {
+                font-size: 1.2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .resume-body {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 30px 25px;
+            }
+
+            .main-content {
+                padding: 30px 25px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
+    <div class="resume-wrapper">
+        <!-- Header Section -->
+        <header class="resume-header">
+            <div class="header-content">
+                <img src="/image/cv_pk.png" alt="Shihab Hossain" class="profile-image">
+                <div class="header-text">
+                    <h1>Shihab Hossain</h1>
+                    <p class="title">Full Stack Web Developer</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:shehab.hossain267@gmail.com">shehab.hossain267@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+8801327842658">+880 1327-842658</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <a href="https://maps.app.goo.gl/AcQUt7fgzZrs8Lxp6" target="_blank">Dhaka, Bangladesh</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <a href="https://shihabhossain1.github.io/me" target="_blank">Portfolio Website</a>
+                        </div>
+                    </div>
 
-    <div class="resume-container">
-        <!-- Aside section for profile and contact info -->
-        <aside>
-            <img src="/image/cv_pk.png" alt="Profile Picture" class="profile-pic">
-            <h1>Shihab Hossain</h1>
-            <p class="subtitle mb-2">Full stack Web Developer</p>
-            <div class="contact-info">
-                <p>
-                    Email: <a href="mailto:shehab.hossain267@gmail.com">shehab.hossain267@gmail.com</a>
-                </p>
-                <p>
-                    Phone: <a href="tel:+8801327842658">+8801327-842658</a>
-                </p>
-                <p><i class="fa-solid fa-location-dot"></i> <a href="https://maps.app.goo.gl/AcQUt7fgzZrs8Lxp6" target="_blank">Dhaka, Bangladesh</a></p>
-                <p>Website: <a target="_blank" href="https://shihabhossain1/github.io/me">https://shihabhossain1/github.io/me</p></a>
-            </div>
-            <div class="mt-3">
-                <a href="https://github.com/shihabhossain1" target="_blank" class="social-button"><i class="fa-brands fa-github"></i></a>
-                <a href="https://linkedin.com/in/shihabhossain17" target="_blank" class="social-button"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://youtube.com/your-youtube" target="_blank" class="social-button"><i class="fa-brands fa-youtube"></i></a>
-                <a href="mailto:shehab.hossain267@gmail.com" target="_blank" class="social-button"><i class="fa-solid fa-envelope"></i></a>
-            </div>
-
-            <!-- Skills Section -->
-            <div class="section skills">
-                <h2>Skills</h2>
-                <ul class="skills-list">
-                    <li><strong>Frontend Technologies:</strong><br> HTML, CSS, Bootstrap, JavaScript, vue js, HTMX</li>
-                    <li><strong >Backend Technologies:</strong><br>
-                    Python, Django, Flask, Django REST Framework, Celery, Redis, Gunicorn, uWSGI, Nginx, Docker
-                    </li>
-                    <li><strong>Server Technologies:</strong><br> Linux, ubuntu,Gunicorn, uWSGI, Nginx, Heroku, Pythonanywhere</li>
-                    <li><strong>Database Technologies:</strong><br> MYSQL, SQL, SQLite3, Posgresql</li>
-                </ul>
-            </div>
-
-            <!-- SOFT SKILLS Section -->
-            <div class="section soft-skills">
-                <h2>Soft Skills</h2>
-                <ul class="skills-list">
-                    <li>Communication</li>
-                    <li>Problem-Solving</li>
-                    <li>Teamwork</li>
-                    <li>Adaptability</li>
-                    <li>Time Management</li>
-                    <li>Critical Thinking</li>
-                </ul>
-            </div>
-
-            <!-- Languages Section -->
-            <div class="section languages">
-                <h2>Languages</h2>
-                <ul class="languages-list">
-                    <li>English</li>
-                    <li>Bangla</li>
-                    <li>Hindi</li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- Main section for detailed information -->
-        <main>
-            <!-- About Me Section -->
-            <div class="section about">
-                <h2>About Me</h2>
-                <p>
-                    Hey I'm Shihab Hossain and I'm giving service of Web design & development on Python Django, Flask, Django Rest Framework, Vue js and bootstrap. My code is always SEO-friendly and clean Code To ensure The eest User Experience, I'm also a server management expert..
-                </p>
-            </div>
-
-            <!-- Work Experience Section -->
-            <div class="section work-experience">
-                <h2>Work Experience</h2>
-                <ul>
-                    <li>
-                        <strong>Jan 2022 - Present</strong><br>
-                        <em><a href="https://www.mohuls.com" class="no-underline" target="_blank">Mohuls Soft Limited</a></em> - Senior Software Engineer, Dhaka, Bangladesh
-                        <ul>
-                            <li>Worked on large-scale software solutions for enterprise clients</li>
-                            <li>Collaborated with cross-functional teams to develop custom software applications</li>
-                            <li>Managed client communications and requirements to deliver tailored solutions</li>
-                            <li>Mentored junior developers and led training sessions</li>
-                        </ul>
-                    </li>
-                    <li>
-                    <li>
-                        <strong>Jul 2020 - Aug 2021</strong><br>
-                        <em><a href="https://uniquebusinessworld.com/" class="no-underline" target="_blank">Unique Business World</a></em> - Senior Software Engineer - Remot
-                        <ul>
-                            <li>Visited corporate client offices to offer latest products</li>
-                            <li>Built relationships with clients to maintain sales goals and create new opportunities</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Aug 2019 - Jul 2020</strong><br>
-                        <em>Timmerman Industries</em> - Sales Agent
-                        <ul>
-                            <li>Visited corporate client offices to offer latest products</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Project Section -->
-            <div class="section projects">
-                <h2>Projects</h2>
-                <div class="project-item">
-                    <strong>GoVoucher</strong><br>
-                    <p>Developed a complete voucher management platform for businesses to generate, distribute, and redeem vouchers, enabling online and offline promotions. The project involves a Python Django backend and an HTML/CSS/Bootstrap frontend.</p>
-                    <a href="https://www.govoucher.com" target="_blank" class="no-underline">View Project</a>
-                </div><br>
-                <div class="project-item">
-                    <strong>Best Online Earning</strong><br>
-                    <p>An online platform offering users various ways to earn money by completing tasks, taking surveys, and engaging with brands. This project involved creating a secure and scalable platform using Python, Django, and MySQL with an intuitive frontend built using Bootstrap and JavaScript.</p>
-                    <a href="https://uniquebusinessworld.com/" target="_blank" class="no-underline">View Project</a>
+                    <div class="social-links">
+                        <a href="https://github.com/shihabhossain1" target="_blank" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/shihabhossain17" target="_blank" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://facebook.com/shihabhossain17" target="_blank" class="social-link" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="mailto:shehab.hossain267@gmail.com" class="social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
+        </header>
 
-            
-            <!-- Education Section -->
-            <div class="section education">
-                <h2>Education</h2>
-                <ul>
-                    <li>
-                        <strong>2022 - Present</strong><br>
-                        <em>BA Honours</em> - National University
-                    </li>
-                    <li>
-                        <strong>Completed Web Development in 10 Minute Program</strong><br>
-                        <em>IT Program</em> - IT Institute
-                    </li>
-                    <li></li>
-                        <strong>2020 - 2022</strong><br>
-                        <em>HSC,SSC</em> - Secondary School
-                    </li>
-                </ul>
-                
-            </div>
+        <!-- Body Section -->
+        <div class="resume-body">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Skills Section -->
+                <div class="section">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <div class="skill-category-title">Frontend</div>
+                            <div class="skill-category-content">HTML, CSS, Bootstrap, JavaScript, Vue.js, HTMX</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Backend</div>
+                            <div class="skill-category-content">Python, Django, Flask, Django REST Framework, Celery, Redis</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Server & DevOps</div>
+                            <div class="skill-category-content">Linux, Ubuntu, Gunicorn, uWSGI, Nginx, Docker, Heroku</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">Database</div>
+                            <div class="skill-category-content">MySQL, PostgreSQL, SQLite3</div>
+                        </div>
+                    </div>
+                </div>
 
-        </main>
+                <!-- Soft Skills Section -->
+                <div class="section">
+                    <h2 class="section-title">Soft Skills</h2>
+                    <ul class="soft-skills-list">
+                        <li>Communication</li>
+                        <li>Problem-Solving</li>
+                        <li>Teamwork</li>
+                        <li>Adaptability</li>
+                        <li>Time Management</li>
+                        <li>Critical Thinking</li>
+                    </ul>
+                </div>
+
+                <!-- Languages Section -->
+                <div class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <ul class="languages-list">
+                        <li>English</li>
+                        <li>Bangla</li>
+                        <li>Hindi</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- About Me Section -->
+                <div class="section">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-text">
+                        Experienced Full Stack Web Developer specializing in Python Django, Flask, Django REST Framework, Vue.js, and Bootstrap. I deliver SEO-friendly, clean code solutions with exceptional user experience. My expertise extends to comprehensive server management, ensuring robust and scalable web applications for clients worldwide.
+                    </p>
+                </div>
+
+                <!-- Work Experience Section -->
+                <div class="section">
+                    <h2 class="section-title">Professional Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="item-header">
+                            <div class="item-date">Jan 2022 - Present</div>
+                            <h3 class="item-title">Senior Software Engineer</h3>
+                            <p class="item-subtitle"><a href="https://www.mohuls.com" target="_blank" style="color: inherit; text-decoration: none;">Mohuls Soft Limited</a> • Dhaka, Bangladesh</p>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Architected and developed large-scale enterprise software solutions for diverse clients</li>
+                                <li>Collaborated with cross-functional teams to deliver custom applications meeting complex business requirements</li>
+                                <li>Managed client communications and requirements gathering to ensure tailored solutions</li>
+                                <li>Mentored junior developers and conducted technical training sessions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="item-header">
+                            <div class="item-date">Jul 2020 - Aug 2021</div>
+                            <h3 class="item-title">Senior Software Engineer</h3>
+                            <p class="item-subtitle"><a href="https://uniquebusinessworld.com/" target="_blank" style="color: inherit; text-decoration: none;">Unique Business World</a> • Remote</p>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Engaged with corporate clients to present and implement cutting-edge software solutions</li>
+                                <li>Built and maintained strong client relationships to exceed sales targets and identify new opportunities</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="item-header">
+                            <div class="item-date">Aug 2019 - Jul 2020</div>
+                            <h3 class="item-title">Sales Agent</h3>
+                            <p class="item-subtitle">Timmerman Industries</p>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Conducted product demonstrations and consultations at corporate client offices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div class="section">
+                    <h2 class="section-title">Featured Projects</h2>
+                    
+                    <div class="project-item">
+                        <div class="item-header">
+                            <h3 class="item-title">GoVoucher</h3>
+                        </div>
+                        <div class="item-description">
+                            <p>Developed a comprehensive voucher management platform enabling businesses to generate, distribute, and redeem vouchers for both online and offline promotions. Built with Python Django backend and responsive HTML/CSS/Bootstrap frontend, featuring secure payment integration and real-time analytics.</p>
+                            <a href="https://www.govoucher.com" target="_blank" class="project-link">
+                                View Live Project <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Best Online Earning</h3>
+                        </div>
+                        <div class="item-description">
+                            <p>Created a secure and scalable online earning platform where users complete tasks, surveys, and brand engagements. Implemented robust authentication, payment processing, and admin dashboard using Python, Django, MySQL, with an intuitive frontend built using Bootstrap and JavaScript.</p>
+                            <a href="https://uniquebusinessworld.com/" target="_blank" class="project-link">
+                                View Live Project <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div class="item-date">2022 - Present</div>
+                            <h3 class="item-title">BA Honours</h3>
+                            <p class="item-subtitle">National University</p>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div class="item-date">Completed</div>
+                            <h3 class="item-title">Web Development Program</h3>
+                            <p class="item-subtitle">IT Institute</p>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div class="item-date">2020 - 2022</div>
+                            <h3 class="item-title">HSC, SSC</h3>
+                            <p class="item-subtitle">Secondary School</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-
 </body>
 </html>
-
-
-<script>
-window.addEventListener("beforeprint", () => {
-  const style = document.createElement("style");
-  style.innerHTML = `
-    @media print {
-      @page { margin: 0; }
-      body { margin: 0; padding: 0; }
-      header, footer { display: none; }
-    }
-  `;
-  document.head.appendChild(style);
-});
-</script>
